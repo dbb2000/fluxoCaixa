@@ -58,11 +58,12 @@ public class FluxoCaixaService implements FluxoCaixaOperacoes {
 	public void putLancamento(Long idLancamento, LancamentoDtoIn dto) {
 		LOGGER.info("FluxoCaixaService::putLancamento() - alterando lançamento de ID: {}", idLancamento);
 		LancamentoModel velhoModel = lancamentoRepository.findById(idLancamento).get();
+		anuladorService.anularLancamento(velhoModel);
+		
 		LancamentoModel novoModel = conversor.dtoInToModel(dto);
-		novoModel.setIdLancamento(idLancamento);
+		novoModel.setIdLancamento(velhoModel.getIdLancamento());
 		
 		lancamentoRepository.save(novoModel);
-		anuladorService.anularLancamento(velhoModel);
 		processadorService.executarCalculoSaldo(dto.getTipoEntrada(), novoModel.getValor());
 	}
 

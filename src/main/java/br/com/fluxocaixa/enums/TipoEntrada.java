@@ -2,13 +2,14 @@ package br.com.fluxocaixa.enums;
 
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 
+
 import br.com.fluxocaixa.interfaces.OperacaoMatService;
 import br.com.fluxocaixa.processors.CreditoProcessor;
 import br.com.fluxocaixa.processors.DebitoProcessor;
 
 public enum TipoEntrada {
 
-	CREDITO {
+	CREDITO("CREDITO") {
 
 		@Override
 		public OperacaoMatService getProcessor(AutowireCapableBeanFactory beanFactory) {
@@ -19,7 +20,7 @@ public enum TipoEntrada {
 		
 	},
 	
-	DEBITO {
+	DEBITO("DEBITO") {
 
 		@Override
 		public OperacaoMatService getProcessor(AutowireCapableBeanFactory beanFactory) {
@@ -30,6 +31,15 @@ public enum TipoEntrada {
 		
 	};
 	
+	private String tipo;
+
+	TipoEntrada(String tipo) {
+		this.tipo = tipo;
+	}
+	
+	public String getTipoEntrada() {
+		return tipo;
+	}
 
 	public abstract OperacaoMatService getProcessor(final AutowireCapableBeanFactory beanFactory);
 }
