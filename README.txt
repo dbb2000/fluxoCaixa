@@ -5,8 +5,13 @@
 
 ############ Considerações: ############
 - O banco de dados é o H2 configurado para trabalhar em memória.
+- Se o serviço for reiniciado ou parado, os dados em banco serão perdidos.
 - Após o start do serviço, o saldo sempre inicia com R$ 0,00.
 - Importe o arquivo "FluxoCaixa.postman_collection.json" no Postman com a coleção de chamadas prontas para utilização
+- Você pode utilizar o H2 console para verificar os lançamentos salvos, assim como o saldo.
+  Basta acessar em: "http://localhost:8080/h2".
+  Caso seja necessário, no campo "JDBC URL" coloque o valor "jdbc:h2:mem:demo".
+  O username é "sa" e a senha é "fc2023".
 
 ############ Instalação: ############
 Para instalação, execute o seguinte comando dentro da pasta do projeto:
