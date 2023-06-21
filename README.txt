@@ -21,6 +21,9 @@ mvn install
 Para rodar o micro serviço, digite:
 mvn spring-boot:run
 
+IMPORTANTE: A aplicação está protegida com recursos de segurança incluindo protocolo OAUTH2. Para que as chamadas de operações 
+  funcionem, é preciso primeiramente executar a chamada de nome "Autorização" para autenticar.
+
 ############ Lista de endPoints: ############
 
 GET: http://localhost:8080/lancamentos/"idLancamento"
